@@ -7,8 +7,15 @@ describe('StatusColumnHeader', () => {
       <StatusColumnHeader />
     );
 
-    expect(header.equals(
-      <th className="rs-table-status" />
-    )).toBe(true);
+    expect(header.type()).toBe('th');
+    expect(header.hasClass('rs-table-status')).toBe(true);
+  });
+
+  it('adds the supplied className', () => {
+    const header = shallow(
+      <StatusColumnHeader className="test-class" />
+    );
+
+    expect(header.hasClass('test-class')).toBe(true);
   });
 });

@@ -1,6 +1,13 @@
-const StatusColumnHeader = () => {
+import classNames from 'classnames';
+
+const StatusColumnHeader = (props) => {
+  const classes = classNames(
+    'rs-table-status',
+    props.className
+  );
+
   return (
-    <th className="rs-table-status" />
+    <th { ...props } className={ classes } />
   );
 };
 

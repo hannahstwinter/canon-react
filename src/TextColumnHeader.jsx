@@ -4,13 +4,15 @@ import classNames from 'classnames';
 
 class TextColumnHeader extends Component {
   render() {
-    const { label, sortable, direction } = this.props;
+    let classes;
+    const { label, sortable, direction, className } = this.props;
 
     if (sortable) {
-      const classes = classNames(
+      classes = classNames(
         'rs-table-sort',
         { 'rs-table-sort-asc': direction === SortDirection.ASCENDING },
-        { 'rs-table-sort-desc': direction === SortDirection.DESCENDING }
+        { 'rs-table-sort-desc': direction === SortDirection.DESCENDING },
+        className
       );
 
       return (
@@ -25,7 +27,7 @@ class TextColumnHeader extends Component {
 
     return (
       <th>
-        <span className="rs-table-sort-text">{ label }</span>
+        <span className={ classNames('rs-table-sort-text', className) }>{ label }</span>
       </th>
     );
   }

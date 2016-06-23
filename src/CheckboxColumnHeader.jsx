@@ -1,6 +1,13 @@
-const CheckboxColumnHeader = () => {
+import classNames from 'classnames';
+
+const CheckboxColumnHeader = (props) => {
+  const classes = classNames(
+    'rs-table-checkbox',
+    props.className
+  );
+
   return (
-    <th className="rs-table-checkbox" />
+    <th { ...props } className={ classes } />
   );
 };
 

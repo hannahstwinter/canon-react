@@ -13,6 +13,7 @@ import DemoDetailSection from './DemoDetailSection';
 import DemoDetailSectionCollapsible from './DemoDetailSectionCollapsible';
 import DemoDetailSectionDefaultCollapsed from './DemoDetailSectionDefaultCollapsed';
 import DemoDetailSectionCollapsibleLoading from './DemoDetailSectionCollapsibleLoading';
+import DemoDataTableSection from './DemoDataTableSection';
 
 class DemoView extends React.Component {
   render() {
@@ -31,6 +32,7 @@ class DemoView extends React.Component {
         <DemoTooltipSection />
         <DemoDropdownSection />
         <DemoFacetsSection />
+        <DemoDataTableSection />
       </div>
     );
   }

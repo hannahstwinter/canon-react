@@ -1,8 +1,8 @@
-import DataTableOverlay from './DataTableOverlay';
+import ListTableOverlay from './ListTableOverlay';
 import { PropTypes } from 'react';
 
 const EmptyOverlay = ({ title, subtitle, message }) => (
-  <DataTableOverlay { ...{ title, subtitle, message } } />
+  <ListTableOverlay { ...{ title, subtitle, message } } />
 );
 
 EmptyOverlay.propTypes = {

@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import ErrorOverlay from '../transpiled/ErrorOverlay';
-import DataTableOverlay from '../transpiled/DataTableOverlay';
+import ListTableOverlay from '../transpiled/ListTableOverlay';
 
 describe('ErrorOverlay', () => {
   let errorOverlay, overlay;
@@ -10,11 +10,11 @@ describe('ErrorOverlay', () => {
       <ErrorOverlay message="This is an error message" />
     );
 
-    overlay = errorOverlay.find(DataTableOverlay);
+    overlay = errorOverlay.find(ListTableOverlay);
   });
 
-  it('renders a root DataTableOverlay', () => {
-    expect(errorOverlay.type()).toBe(DataTableOverlay);
+  it('renders a root ListTableOverlay', () => {
+    expect(errorOverlay.type()).toBe(ListTableOverlay);
   });
 
   it('passes an rs-table-overlay-error className', () => {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DataTable from './DataTable';
-import DataTableHeader from './DataTableHeader';
-import DataTableBody from './DataTableBody';
-import EmbeddedDataTable from './EmbeddedDataTable';
+import ListTable from './ListTable';
+import ListTableHeader from './ListTableHeader';
+import ListTableBody from './ListTableBody';
+import EmbeddedListTable from './EmbeddedListTable';
 import ErrorOverlay from './ErrorOverlay';
 import LoadingOverlay from './LoadingOverlay';
 import EmptyOverlay from './EmptyOverlay';
@@ -12,16 +12,16 @@ import CheckboxColumnHeader from './CheckboxColumnHeader';
 import StatusColumnHeader from './StatusColumnHeader';
 import TextColumnHeader from './TextColumnHeader';
 
-const DemoDataTableHeader = ({ onSort, sortColumn, direction }) => (
-  <DataTableHeader { ...{ onSort, sortColumn, direction } }>
+const DemoListTableHeader = ({ onSort, sortColumn, direction }) => (
+  <ListTableHeader { ...{ onSort, sortColumn, direction } }>
     <StatusColumnHeader />
     <CheckboxColumnHeader />
     <TextColumnHeader columnId="name" className="name" sortable label="Name" />
     <TextColumnHeader columnId="count" className="count" sortable label="Count" />
-  </DataTableHeader>
+  </ListTableHeader>
 );
 
-DemoDataTableHeader.propTypes = {
+DemoListTableHeader.propTypes = {
   onSort: React.PropTypes.func,
   sortColumn: React.PropTypes.string,
   direction: React.PropTypes.oneOf([
@@ -30,7 +30,7 @@ DemoDataTableHeader.propTypes = {
   ])
 };
 
-const DemoDataTableRow = ({ instance }) => (
+const DemoListTableRow = ({ instance }) => (
   <tr data-model_id={ instance.id }>
     <td className="rs-table-status rs-table-status-ok"></td>
     <td className="rs-table-checkbox"><input type="checkbox" /></td>
@@ -39,11 +39,11 @@ const DemoDataTableRow = ({ instance }) => (
   </tr>
 );
 
-DemoDataTableRow.propTypes = {
+DemoListTableRow.propTypes = {
   instance: React.PropTypes.object.isRequired
 };
 
-class DemoDataTableSection extends React.Component {
+class DemoListTableSection extends React.Component {
   constructor() {
     super();
 
@@ -67,48 +67,48 @@ class DemoDataTableSection extends React.Component {
     return (
       <div className='rs-detail-section'>
         <div className='rs-detail-section-header'>
-          <h2>Data Table</h2>
+          <h2>List Table</h2>
         </div>
         <div className='rs-detail-section-body'>
-          <h3>Data Table</h3>
-          <DataTable style={ tableStyle }>
-            <DemoDataTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <DataTableBody collection={ sortedCollection }>
-              <DemoDataTableRow />
-            </DataTableBody>
-          </DataTable>
+          <h3>List Table</h3>
+          <ListTable style={ tableStyle }>
+            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+            <ListTableBody collection={ sortedCollection }>
+              <DemoListTableRow />
+            </ListTableBody>
+          </ListTable>
           <hr />
           <h3>Empty Overlay</h3>
-          <DataTable style={ tableStyle } isEmpty emptyOverlay={ emptyOverlay }>
-            <DemoDataTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <DataTableBody collection={ [] }>
-              <DemoDataTableRow />
-            </DataTableBody>
-          </DataTable>
+          <ListTable style={ tableStyle } isEmpty emptyOverlay={ emptyOverlay }>
+            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+            <ListTableBody collection={ [] }>
+              <DemoListTableRow />
+            </ListTableBody>
+          </ListTable>
           <hr />
           <h3>Error Overlay</h3>
-          <DataTable style={ tableStyle } isErrored errorOverlay={ errorOverlay }>
-            <DemoDataTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <DataTableBody collection={ [] }>
-              <DemoDataTableRow />
-            </DataTableBody>
-          </DataTable>
+          <ListTable style={ tableStyle } isErrored errorOverlay={ errorOverlay }>
+            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+            <ListTableBody collection={ [] }>
+              <DemoListTableRow />
+            </ListTableBody>
+          </ListTable>
           <hr />
           <h3>Loading Overlay</h3>
-          <DataTable style={ tableStyle } isLoading loadingOverlay={ loadingOverlay }>
-            <DemoDataTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <DataTableBody collection={ [] }>
-              <DemoDataTableRow />
-            </DataTableBody>
-          </DataTable>
+          <ListTable style={ tableStyle } isLoading loadingOverlay={ loadingOverlay }>
+            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+            <ListTableBody collection={ [] }>
+              <DemoListTableRow />
+            </ListTableBody>
+          </ListTable>
           <hr />
-          <h3>Embedded Data Table</h3>
-          <EmbeddedDataTable size="medium" style={ tableStyle }>
-            <DemoDataTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
-            <DataTableBody collection={ sortedCollection }>
-              <DemoDataTableRow />
-            </DataTableBody>
-          </EmbeddedDataTable>
+          <h3>Embedded List Table</h3>
+          <EmbeddedListTable size="medium" style={ tableStyle }>
+            <DemoListTableHeader onSort={ this._handleSort } sortColumn={ this.state.sortColumn } direction={ this.state.direction } />
+            <ListTableBody collection={ sortedCollection }>
+              <DemoListTableRow />
+            </ListTableBody>
+          </EmbeddedListTable>
         </div>
       </div>
     );
@@ -169,4 +169,4 @@ const COLLECTION = [
   {id: 4, name: 'four', count: 6},
 ];
 
-export default DemoDataTableSection;
+export default DemoListTableSection;

@@ -1,7 +1,7 @@
-import DataTableOverlay from './DataTableOverlay';
+import ListTableOverlay from './ListTableOverlay';
 
 const LoadingOverlay = () => (
-  <DataTableOverlay className="rs-table-overlay-loading" message="Loading&hellip;" />
+  <ListTableOverlay className="rs-table-overlay-loading" message="Loading&hellip;" />
 );
 
 export default LoadingOverlay;

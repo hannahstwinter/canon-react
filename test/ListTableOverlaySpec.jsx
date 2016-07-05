@@ -1,13 +1,13 @@
 import { shallow } from 'enzyme';
-import DataTableOverlay from '../transpiled/DataTableOverlay';
+import ListTableOverlay from '../transpiled/ListTableOverlay';
 
-describe('DataTableOverlay', () => {
+describe('ListTableOverlay', () => {
   let overlay;
 
   describe('when rendering with all properties', () => {
     beforeEach(() => {
       overlay = shallow(
-        <DataTableOverlay
+        <ListTableOverlay
           title="This is a title"
           subtitle="This is a subtitle"
           message="This is a message"
@@ -35,7 +35,7 @@ describe('DataTableOverlay', () => {
 
   describe('when the title, subtitle, and message properties are not defined', () => {
     beforeEach(() => {
-      overlay = shallow(<DataTableOverlay />);
+      overlay = shallow(<ListTableOverlay />);
     });
 
     it('does not render the title div', () => {
@@ -52,7 +52,7 @@ describe('DataTableOverlay', () => {
   });
 
   it('adds the supplied class', () => {
-    overlay = shallow(<DataTableOverlay className="blah" />);
+    overlay = shallow(<ListTableOverlay className="blah" />);
 
     expect(overlay.find('.blah').length).toBe(1);
   });

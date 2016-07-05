@@ -1,17 +1,17 @@
 import { shallow } from 'enzyme';
-import DataTableHeader from '../transpiled/DataTableHeader';
+import ListTableHeader from '../transpiled/ListTableHeader';
 import SortDirection from '../transpiled/SortDirection';
 
-describe('DataTableHeader', () => {
+describe('ListTableHeader', () => {
   let header, row, sortHandler;
 
   beforeEach(() => {
     sortHandler = jasmine.createSpy('sortHandler');
     header = shallow(
-      <DataTableHeader sortColumn="one" direction={ SortDirection.ASCENDING } onSort={ sortHandler }>
+      <ListTableHeader sortColumn="one" direction={ SortDirection.ASCENDING } onSort={ sortHandler }>
         <th key="one" columnId="one" sortable />
         <th id="two" />
-      </DataTableHeader>
+      </ListTableHeader>
     );
     row = header.find('tr');
   });

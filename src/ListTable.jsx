@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 
-class DataTable extends Component {
+class ListTable extends Component {
   render() {
     const {
       children,
@@ -25,13 +25,13 @@ class DataTable extends Component {
   }
 }
 
-DataTable.defaultProps = {
+ListTable.defaultProps = {
   isEmpty: false,
   isErrored: false,
   isLoading: false
 };
 
-DataTable.propTypes = {
+ListTable.propTypes = {
   children: PropTypes.node,
   className: React.PropTypes.string,
   emptyOverlay: PropTypes.node,
@@ -42,4 +42,4 @@ DataTable.propTypes = {
   loadingOverlay: PropTypes.node
 };
 
-export default DataTable;
+export default ListTable;

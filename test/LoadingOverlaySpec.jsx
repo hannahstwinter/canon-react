@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import LoadingOverlay from '../transpiled/LoadingOverlay';
-import DataTableOverlay from '../transpiled/DataTableOverlay';
+import ListTableOverlay from '../transpiled/ListTableOverlay';
 
 describe('LoadingOverlay', () => {
   let loadingOverlay;
@@ -11,7 +11,7 @@ describe('LoadingOverlay', () => {
     );
 
     expect(loadingOverlay.equals(
-      <DataTableOverlay className="rs-table-overlay-loading" message="Loading&hellip;" />
+      <ListTableOverlay className="rs-table-overlay-loading" message="Loading&hellip;" />
     )).toBe(true);
   });
 });

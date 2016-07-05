@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import EmptyOverlay from '../transpiled/EmptyOverlay';
-import DataTableOverlay from '../transpiled/DataTableOverlay';
+import ListTableOverlay from '../transpiled/ListTableOverlay';
 
 describe('EmptyOverlay', () => {
   let emptyOverlay, overlay;
@@ -14,10 +14,10 @@ describe('EmptyOverlay', () => {
       />
     );
 
-    overlay = emptyOverlay.find(DataTableOverlay);
+    overlay = emptyOverlay.find(ListTableOverlay);
   });
 
-  it('renders the DataTableOverlay', () => {
+  it('renders the ListTableOverlay', () => {
     expect(overlay.length).toBe(1);
   });
 

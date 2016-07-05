@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 
-class DataTableBody extends Component {
+class ListTableBody extends Component {
   render() {
     return (
       <tbody>
@@ -21,9 +21,9 @@ class DataTableBody extends Component {
   }
 }
 
-DataTableBody.propTypes = {
+ListTableBody.propTypes = {
   children: PropTypes.element.isRequired,
   collection: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default DataTableBody;
+export default ListTableBody;

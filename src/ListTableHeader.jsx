@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import SortDirection from './SortDirection';
 
-class DataTableHeader extends Component {
+class ListTableHeader extends Component {
   render() {
     return (
       <thead>
@@ -33,11 +33,11 @@ class DataTableHeader extends Component {
   }
 }
 
-DataTableHeader.defaultProps = {
+ListTableHeader.defaultProps = {
   onSort: () => {}
 };
 
-DataTableHeader.propTypes = {
+ListTableHeader.propTypes = {
   onSort: PropTypes.func,
   sortColumn: PropTypes.string,
   direction: PropTypes.oneOf([
@@ -46,4 +46,4 @@ DataTableHeader.propTypes = {
   ])
 };
 
-export default DataTableHeader;
+export default ListTableHeader;

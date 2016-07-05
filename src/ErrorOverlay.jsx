@@ -1,8 +1,8 @@
-import DataTableOverlay from './DataTableOverlay';
+import ListTableOverlay from './ListTableOverlay';
 import { PropTypes } from 'react';
 
 const ErrorOverlay = ({ message }) => (
-  <DataTableOverlay
+  <ListTableOverlay
     className="rs-table-overlay-error"
     message={ <span><i className="rs-icon-error-indicator"></i>{ message }</span> }
   />

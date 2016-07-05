@@ -7,7 +7,7 @@ const SIZE_CLASSES = {
   'large': 'rs-embedded-large'
 };
 
-class EmbeddedDataTable extends Component {
+class EmbeddedListTable extends Component {
   render() {
     let classes;
 
@@ -43,14 +43,14 @@ class EmbeddedDataTable extends Component {
   }
 }
 
-EmbeddedDataTable.defaultProps = {
+EmbeddedListTable.defaultProps = {
   isEmpty: false,
   isErrored: false,
   isLoading: false,
   size: 'small'
 };
 
-EmbeddedDataTable.propTypes = {
+EmbeddedListTable.propTypes = {
   children: PropTypes.node,
   className: React.PropTypes.string,
   emptyOverlay: PropTypes.node,
@@ -62,4 +62,4 @@ EmbeddedDataTable.propTypes = {
   size: React.PropTypes.oneOf(Object.keys(SIZE_CLASSES))
 };
 
-export default EmbeddedDataTable;
+export default EmbeddedListTable;

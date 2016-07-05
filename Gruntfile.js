@@ -67,7 +67,7 @@ module.exports = function (grunt) {
           'test_bundle.js': ['test-built/**/*.js']
         },
         options: {
-          exclude: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
+          external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
           verbose: true
         }
       },
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
           'canon-react.js': ['transpiled/index.js']
         },
         options: {
-          exclude: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
+          external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
           transform: [ 'browserify-shim' ],
           browserifyOptions: {
             standalone: 'canonReact'
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
           'demo/bundle.js': ['transpiled/**/*.js'],
         },
         options: {
-          exclude: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
+          external: ['react/lib/ReactContext', 'react/lib/ExecutionEnvironment'],
           transform: [ 'browserify-shim' ]
         }
       }
@@ -133,7 +133,9 @@ module.exports = function (grunt) {
     'lint:eslint',
     'babel:src',
     'babel:test',
+    'babel:demo',
     'browserify:test',
+    'browserify:demo',
     'browserify:release',
     'uglify:build'
   ]);

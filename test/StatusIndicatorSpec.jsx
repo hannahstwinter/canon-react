@@ -1,94 +1,78 @@
 import StatusIndicator from '../transpiled/StatusIndicator';
+
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 describe('StatusIndicator', () => {
-  let statusIndicator;
+  let statusIndicator, renderer;
+
+  const renderWithProps = (props) => {
+    renderer.render(
+      <StatusIndicator { ...props }>Status Indicator Text</StatusIndicator>
+    );
+  };
 
   beforeEach(() => {
-    statusIndicator = TestUtils.renderIntoDocument(
-      <StatusIndicator id='statusindicator-id' className='test-statusindicator-class'>Status Indicator Text</StatusIndicator>
-    );
+    renderer = TestUtils.createRenderer();
+    renderWithProps({ id: 'statusIndicator-id', className: 'test-statusIndicator-class' });
+    statusIndicator = renderer.getRenderOutput();
   });
 
-  it('creates the default statusindicator', () => {
+  it('creates the default statusIndicator', () => {
+    expect(statusIndicator.type).toBe('span');
     expect(statusIndicator.props.hidden).toBe(false);
-    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('ok');
-  });
-
-  it('renders a span', () => {
-    expect(TestUtils.findRenderedDOMComponentWithTag(statusIndicator, 'span')).not.toBeNull();
-  });
-
-  it('keeps the passed in classes', () => {
-    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('test-statusindicator-class');
+    expect(statusIndicator.props.className).toEqual('rs-status test-statusIndicator-class rs-status-ok');
   });
 
   it('keeps all passed in properties', () => {
-    expect(ReactDOM.findDOMNode(statusIndicator).id).toBe('statusindicator-id');
+    expect(statusIndicator.props.id).toBe('statusIndicator-id');
   });
 
-  it('renders the text of the statusindicator', () => {
-    expect(ReactDOM.findDOMNode(statusIndicator).textContent).toBe('Status Indicator Text');
+  it('renders the text of the statusIndicator', () => {
+    expect(statusIndicator.props.children).toBe('Status Indicator Text');
   });
 
-  it('is not hidden when hidden is false', () => {
-    expect(ReactDOM.findDOMNode(statusIndicator)).not.toHaveClass('rs-hidden');
+  it('adds the hidden class when hidden is true', () => {
+    renderer.render(<StatusIndicator hidden>StatusIndicator Text</StatusIndicator>);
+    statusIndicator = renderer.getRenderOutput();
+
+    expect(statusIndicator.props.className).toEqual('rs-status rs-status-ok rs-hidden');
   });
 
-  it('is hidden when hidden is true', () => {
-    statusIndicator = TestUtils.renderIntoDocument(
-      <StatusIndicator hidden={true}>StatusIndicator Text</StatusIndicator>
-    );
-
-    expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-hidden');
-  });
-
-  describe('statusindicator types', () => {
+  describe('statusIndicator types', () => {
     it('ok', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
-        <StatusIndicator status='ok'>StatusIndicator Text</StatusIndicator>
-      );
+      renderWithProps({ status: 'ok' });
+      statusIndicator = renderer.getRenderOutput();
 
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-ok');
+      expect(statusIndicator.props.className).toEqual('rs-status rs-status-ok');
     });
 
     it('processing', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
-        <StatusIndicator status='processing'>StatusIndicator Text</StatusIndicator>
-      );
+      renderWithProps({ status: 'processing' });
+      statusIndicator = renderer.getRenderOutput();
 
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-processing');
+      expect(statusIndicator.props.className).toEqual('rs-status rs-status-processing');
     });
 
     it('warning', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
-        <StatusIndicator status='warning'>StatusIndicator Text</StatusIndicator>
-      );
+      renderWithProps({ status: 'warning' });
+      statusIndicator = renderer.getRenderOutput();
 
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-warning');
+      expect(statusIndicator.props.className).toEqual('rs-status rs-status-warning');
     });
 
     it('error', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
-        <StatusIndicator status='error'>StatusIndicator Text</StatusIndicator>
-      );
+      renderWithProps({ status: 'error' });
+      statusIndicator = renderer.getRenderOutput();
 
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-error');
+      expect(statusIndicator.props.className).toEqual('rs-status rs-status-error');
     });
 
     it('disabled', () => {
-      statusIndicator = TestUtils.renderIntoDocument(
-        <StatusIndicator status='disabled'>StatusIndicator Text</StatusIndicator>
-      );
+      renderWithProps({ status: 'disabled' });
+      statusIndicator = renderer.getRenderOutput();
 
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status');
-      expect(ReactDOM.findDOMNode(statusIndicator)).toHaveClass('rs-status-disabled');
+      expect(statusIndicator.props.className).toEqual('rs-status rs-status-disabled');
     });
   });
 });
